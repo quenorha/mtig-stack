@@ -1,0 +1,50 @@
+services:
+  telegraf:
+    image: telegraf:1.32
+    container_name: c_telegraf
+    restart: always
+    volumes:
+    - ./conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    - v_influxdb:/var/lib/influxdb
+    depends_on:
+      - influxdb
+      - mosquitto
+
+  influxdb:
+    image: influxdb:1.11.8
+    container_name: c_influxdb
+    restart: always
+    ports:
+      - '8086:8086'
+    volumes:
+      - v_influxdb:/var/lib/influxdb
+
+  grafana:
+    image: grafana/grafana
+    container_name: c_grafana
+    restart: always
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=
+    ports:
+      - '3000:3000'
+    volumes:
+      - v_grafana:/var/lib/grafana
+
+  mosquitto:
+    image: eclipse-mosquitto
+    hostname: mosquitto
+    container_name: c_mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./conf/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+volumes:
+  v_grafana: {}
+  v_influxdb: {}
