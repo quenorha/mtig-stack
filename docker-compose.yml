@@ -4,14 +4,14 @@ services:
     container_name: c_telegraf
     restart: always
     volumes:
-    - ./conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    - /root/conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     - v_influxdb:/var/lib/influxdb
     depends_on:
       - influxdb
       - mosquitto
 
   influxdb:
-    image: influxdb:1.11.8
+    image: influxdb:1.8.10
     container_name: c_influxdb
     restart: always
     ports:
@@ -20,7 +20,7 @@ services:
       - v_influxdb:/var/lib/influxdb
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana-oss
     container_name: c_grafana
     restart: always
     depends_on:
@@ -43,7 +43,7 @@ services:
       - "1883:1883"
       - "9001:9001"
     volumes:
-      - ./conf/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - /root/conf/mosquitto.conf:/mosquitto/config/mosquitto.conf
 
 volumes:
   v_grafana: {}
