@@ -4,11 +4,9 @@ cd /root/conf/
 curl -k -O -O https://raw.githubusercontent.com/quenorha/mtig-stack/refs/heads/main/conf/{telegraf.conf,mosquitto.conf}
 curl -k -O https://raw.githubusercontent.com/quenorha/mtig-stack/refs/heads/main/docker-compose.yml
 
-echo "alias docker-compose='docker run --rm -t --privileged -v $(pwd):/compose -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker wagoautomation/docker-compose'" >> ~/.bashrc
-
 docker run --rm -t \
 --privileged \
 -v $(pwd):/compose \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v /usr/bin/docker:/usr/bin/docker \
-wagoautomation/docker-compose -f docker-compose.yml up
+wagoautomation/docker-compose -f docker-compose.yml up -d
