@@ -8,6 +8,7 @@ The purpose of this repo is to deploy a MTIG stack : Mosquitto Telegraf InfluxDB
 - Docker up and running
 - Date/Time up-to-date (NTP prefered)
 - On WAGO controllers (except PFC300 750-8302) Docker should be configured to use memory card. For this replace the /etc/docker/daemon.json by the file provided in conf folder, and restart Docker or the controller.
+  Memory card should be formatted in ext4.
 
 # Install with Portainer
 
@@ -119,7 +120,7 @@ Le but de ce repo est de déployer une pile MTIG : Mosquitto Telegraf InfluxDB G
 # Prérequis
 - Docker activé
 - Date/Heure à jour (NTP de préférence)
-- Sur les contrôleurs WAGO (sauf PFC300 750-8302) Docker doit être configuré pour utiliser une carte mémoire. Pour cela remplacer le fichier /etc/docker/daemon.json par le fichier fourni dans le dossier conf, et redémarrer Docker ou le contrôleur.
+- Sur les contrôleurs WAGO (sauf PFC300 750-8302) Docker doit être configuré pour utiliser une carte mémoire. Pour cela remplacer le fichier /etc/docker/daemon.json par le fichier fourni dans le dossier conf, et redémarrer Docker ou le contrôleur. La carte mémoire devrait être formatée en ext4.
 
 # Installer avec Portainer
 
