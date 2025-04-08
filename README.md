@@ -144,6 +144,7 @@ docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /va
 - Pour faire cela en ligne de commande :
 ```
 mkdir -p /root/conf
+cd /root/conf
 curl -k -O -O https://raw.githubusercontent.com/quenorha/mtig-stack/refs/heads/main/conf/{telegraf.conf,mosquitto.conf}
 ```
 
