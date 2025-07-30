@@ -55,17 +55,28 @@ Portainer will use docker compose to install the stack.
 
 ## On Edge Computer
 
-- On an Edge Computer, you might need to install Docker compose and Git: 
+- On an Edge Computer, you might need to install Docker compose : 
 ```
 sudo apt-get update
-sudo apt-get install docker-compose-plugin git
+sudo apt-get install docker-compose-plugin
 ```
 
-- Download the docker compose file and deploy the stack :
+- Download configuration file
 ```
-git clone https://github.com/quenorha/mtig-stack.git && cd mtig-stack && docker-compose up -d
+mkdir -p /root/conf
+cd /root/conf
+curl -k -O -O https://raw.githubusercontent.com/quenorha/mtig-stack/refs/heads/main/conf/{telegraf.conf,mosquitto.conf}
 ```
 
+- Download Docker compose file
+```
+curl -k -O https://raw.githubusercontent.com/quenorha/mtig-stack/refs/heads/main/docker-compose.yml
+```
+
+And then 
+```
+docker-compose -f docker-compose.yml up -d
+```
 
 ## On other WAGO Controllers
 
@@ -75,6 +86,7 @@ If you want to do it manually :
 - Download configuration file
 ```
 mkdir -p /root/conf
+cd /root/conf
 curl -k -O -O https://raw.githubusercontent.com/quenorha/mtig-stack/refs/heads/main/conf/{telegraf.conf,mosquitto.conf}
 ```
 
@@ -167,15 +179,27 @@ Portainer utilisera docker compose pour installer la pile.
 
 ## Sur un Edge computer
 
-- Sur un ordinateur Edge, vous pourriez avoir besoin d'installer Docker compose et Git : 
+- Sur un Edge Computer, vous pourriez avoir besoin d'installer Docker compose : 
 ```
 sudo apt-get update
-sudo apt-get install docker-compose-plugin git
+sudo apt-get install docker-compose-plugin
 ```
 
-- Téléchargez le fichier docker compose et déployez la pile :
+- Téléchargez les fichiers de configuration
 ```
-git clone https://github.com/quenorha/mtig-stack.git && cd mtig-stack && docker-compose up -d
+mkdir -p /root/conf
+cd /root/conf
+curl -k -O -O https://raw.githubusercontent.com/quenorha/mtig-stack/refs/heads/main/conf/{telegraf.conf,mosquitto.conf}
+```
+
+- Télécharger le fichier Docker compose
+```
+curl -k -O https://raw.githubusercontent.com/quenorha/mtig-stack/refs/heads/main/docker-compose.yml
+```
+
+Et lancer le déploiement de la stack
+```
+docker-compose -f docker-compose.yml up -d
 ```
 
 
@@ -184,8 +208,8 @@ git clone https://github.com/quenorha/mtig-stack.git && cd mtig-stack && docker-
 ### Installation manuelle 
 Si vous voulez le faire manuellement : 
 
-- Téléchargez le fichier de configuration
-``
+- Téléchargez les fichiers de configuration
+```
 mkdir -p /root/conf
 curl -k -O -O https://raw.githubusercontent.com/quenorha/mtig-stack/refs/heads/main/conf/{telegraf.conf,mosquitto.conf}
 ```
