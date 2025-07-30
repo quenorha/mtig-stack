@@ -63,7 +63,7 @@ sudo apt-get install docker-compose-plugin git
 
 - Download the docker compose file and deploy the stack :
 ```
-git clone https://github.com/quenorha/mtig-stack.git && docker compose up -d
+git clone https://github.com/quenorha/mtig-stack.git && docker-compose up -d
 ```
 
 
